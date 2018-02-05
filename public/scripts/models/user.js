@@ -4,9 +4,10 @@ var app = app || {};
 // local
 // const __API_URL__ = 'http://localhost:3737';
 // staging
-const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com/';
+const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com';
 // production
-// const __API_URL__ = 'https://d29forum-server-production.herokuapp.com/';
+// const __API_URL__ = 'https://d29forum-server-production.herokuapp.com';
+// const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
