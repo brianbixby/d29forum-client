@@ -1,13 +1,12 @@
 'use strict';
 var app = app || {};
 
-//API URL
-// for local: 
+// local
 // const __API_URL__ = 'http://localhost:3737';
-// for staging: 
-// const __API_URL__ = 'https://d29forum-sv-staging.herokuapp.com';
-//for prod: const __API_URL__ =  https://d29forum-sv.herokuapp.com
-const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
+// staging
+const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com/';
+// production
+// const __API_URL__ = 'https://d29forum-server-production.herokuapp.com/';
 
 (function(module) {
   const user = {};
