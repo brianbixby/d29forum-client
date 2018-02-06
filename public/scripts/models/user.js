@@ -2,12 +2,11 @@
 var app = app || {};
 
 // local
-// const __API_URL__ = 'http://localhost:3737';
+const __API_URL__ = 'http://localhost:3737';
 // staging
-const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com';
+// const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com';
 // production
 // const __API_URL__ = 'https://d29forum-server-production.herokuapp.com';
-// const __API_URL__ = 'https://d29forum-sv.herokuapp.com';
 
 (function(module) {
   const user = {};
@@ -20,7 +19,7 @@ const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com';
   }
   
   // POST
-  User.prototype.insert = function() {
+  User.prototype.insert = function(callback) {
     // console.log('user. prototype.insert');
     $.ajax({
       url: `${__API_URL__}/api/db/users`,
@@ -32,11 +31,18 @@ const __API_URL__ = 'https://d29forum-server-staging.herokuapp.com';
         if (results[0].username == this.username){
           console.log('success');
           var setLS = callback => {
+            console.log('1');
             $('#modal1').toggleClass('is-visible');
-            $('#modal3').toggleClass('is-visible');
+            // $('#modal3').toggleClass('is-visible');
             localStorage.currentUserId = results[0].id;
             localStorage.currentUserName = this.username;
             localStorage.currentUserNavatar = results[0].gravatar_hash;
+            if(localStorage.currentUserId) {
+              $('.notLoggedIn').addClass('hidden');
+              $('#loggedInUser').attr('href', `/user/${localStorage.currentUserName}`).text(`${localStorage.currentUserName}'s Profile`);
+              $('.loggedIn').removeClass('hidden');
+              localStorage.currentUserNavatar ? $('.userContainer').removeClass('hidden') : $('.userContainer').addClass('hidden');
+            }
             callback();
           };
           setLS(() => localStorage.deferredRoute ? page.show(localStorage.deferredRoute) : page.show('../'));

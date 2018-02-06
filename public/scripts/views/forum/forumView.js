@@ -7,6 +7,7 @@ var app = app || {};
     forumView.init = function(ctx, next) {
         $('.view').addClass('hidden').find('*').off();
         $('#signup').off();
+        $('#newUserForm').off();
         $('.forumView').removeClass('hidden');
         $('.subforaContainer').on('click', '.accordionToggle', forumView.accordionControls);
         localStorage.banner ? $('.banner').addClass('hidden') : $('.banner').on('click', '.bannerCloseIconSpan', forumView.hideBanner);

@@ -8,6 +8,7 @@
         $('.view').addClass('hidden').find('*').off();
         $('.loginUserView').removeClass('hidden');
         $('#signup').off();
+        $('#newUserForm').off();
         $('#signup').on('click', function(e) {
             e.preventDefault();
             $('#modal3').toggleClass('is-visible');

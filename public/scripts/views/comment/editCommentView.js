@@ -15,6 +15,7 @@ var app = app || {};
         $content.addClass('hidden');
         $comment.find('.editCommentView').removeClass('hidden');
         $('#signup').off();
+        $('#newUserForm').off();
         $('#signup').on('click', function(e) {
             e.preventDefault();
             $('#modal3').toggleClass('is-visible');

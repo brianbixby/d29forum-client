@@ -6,6 +6,7 @@
     errorView.init = function(ctx, next) {
         $('.view').addClass('hidden').find('*').off();
         $('#signup').off();
+        $('#newUserForm').off();
         $('#signup').on('click', function(e) {
             e.preventDefault();
             $('#modal3').toggleClass('is-visible');

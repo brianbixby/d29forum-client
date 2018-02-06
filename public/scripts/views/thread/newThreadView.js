@@ -4,16 +4,21 @@
     const newThreadView = {};
 
     newThreadView.init = function(ctx, next) {
-        $('.view').addClass('hidden').find('*').off;
+      console.log('1');
+        $('.view').addClass('hidden').find('*').off();
         if (localStorage.deferredRoute) {
+          console.log('1');
           delete localStorage.deferredRoute;
         } else {
+          console.log('1');
           $('.newThreadTitle').empty();
           $('.newThreadContent').empty();
         }
         $('#signup').off();
+        $('#newUserForm').off();
         $('#signup').on('click', function(e) {
             e.preventDefault();
+            console.log('1');
             $('#modal3').toggleClass('is-visible');
             $('#newUserForm').on('submit', app.newUserView.submit);
         });
@@ -22,9 +27,14 @@
         $('.newThreadView').removeClass('hidden');
 
         $('.addThreadButton').on('click', () => {
+          console.log('1');
           let newThread = new app.Thread({creator: localStorage.currentUserId, title: $('.newThreadTitle').val(), content: $('.newThreadContent').val(), subforum_parent: ctx.params.subforum_id});
-          if (localStorage.currentUserId) newThread.insert();
+          if (localStorage.currentUserId){
+            console.log('1');
+            newThread.insert();
+          } 
           else {
+            console.log('1');
             localStorage.deferredRoute = `/subfora/${ctx.params.subfora_id}/${ctx.params.subforum_title}/threads/new`;
             page.show('/login');
           }
